@@ -1,0 +1,15 @@
+App:
+  image: node:0.12.2
+  volumes:
+   - .:/src
+  command: sh -c "npm install -g nodemon; npm install; nodemon app.js;"
+  working_dir: /src/
+  ports:
+   - "5000:5000"
+  links:
+   - Mongo
+  environment:
+    MONGODB: mongodb://Mongo/reviewninja
+
+Mongo:
+  image: mongo
