@@ -4,10 +4,22 @@ App:
    - "5000:5000"
   links:
    - Mongo
+   - Slack
+   - Nginx
+   - Logstash
   environment:
     MONGODB: mongodb://Mongo/reviewninja
     GITHUB_CLIENT:
     GITHUB_SECRET:
 
+Slack:
+  image: reviewninja/slack-hooks
+
+Nginx:
+  image: nginx
+
 Mongo:
   image: mongo
+
+Logstash:
+  image: logstash
