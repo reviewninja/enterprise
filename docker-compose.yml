@@ -6,6 +6,8 @@ App:
    - Mongo
   environment:
     MONGODB: mongodb://Mongo/reviewninja
+    GITHUB_CLIENT:
+    GITHUB_SECRET:
 
 Mongo:
   image: mongo
