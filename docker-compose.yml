@@ -7,8 +7,18 @@ App:
    - Slack
   environment:
     MONGODB: mongodb://Mongo/reviewninja
+    SMTP_HOST:
+    SMTP_TLS:
+    CERT:
+    PROTOCOL:
+    HOST:
     GITHUB_CLIENT: 
     GITHUB_SECRET: 
+    GITHUB_HOST:
+    GITHUB_API_HOST:
+    GITHUB_API_PATHPREFIX:
+    GITHUB_USER:
+    GITHUB_PASS:
     SLACK_HOST: Slack
     SLACK_PORT: 8080
 
