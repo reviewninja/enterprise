@@ -5,21 +5,27 @@ App:
   links:
    - Mongo
    - Slack
-   - Nginx
-   - Logstash
   environment:
     MONGODB: mongodb://Mongo/reviewninja
-    GITHUB_CLIENT:
-    GITHUB_SECRET:
+    GITHUB_CLIENT: 
+    GITHUB_SECRET: 
+    SLACK_HOST: Slack
+    SLACK_PORT: 8080
+
+Nginx:
+  image: reviewninja/nginx
+  links:
+   - App
+  ports:
+   - "80:80"
+   - "443:443"
+  environment:
+    APP_HOST: App
 
 Slack:
   image: reviewninja/slack-hooks
-
-Nginx:
-  image: nginx
+  ports:
+   - "8080:80"
 
 Mongo:
   image: mongo
-
-Logstash:
-  image: logstash
