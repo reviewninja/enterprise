@@ -13,7 +13,7 @@ App:
     PROTOCOL:
     HOST:
     GITHUB_CLIENT: 
-    GITHUB_SECRET: 
+    GITHUB_SECRET:
     GITHUB_HOST:
     GITHUB_API_HOST:
     GITHUB_API_PATHPREFIX:
@@ -39,3 +39,32 @@ Slack:
 
 Mongo:
   image: mongo
+
+Elasticsearch:
+  image: elasticsearch
+  ports:
+   - "9200:9200"
+  volumes:
+   - /var/lib/elasticsearch
+
+Logstash:
+  image: ggruiz/logstash
+  ports:
+   - "6000:6000"
+   - "6000:6000/udp"
+  links:
+   - Elasticsearch
+  environment:
+    LOGSPOUT: ignore
+  command: -f /opt/logstash/logstash.conf
+
+Kibana:
+  image: clusterhq/kibana
+  ports:
+   - "6600:8080"
+
+Logspout:
+  image: gliderlabs/logspout
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  command: syslog://localhost:6000
