@@ -1,1 +1,3 @@
-# ReviewNinja Docker Files (for enterprise users)
+# ReviewNinja Docker Compose File (for enterprise users)
+
+Blank template to start with.
