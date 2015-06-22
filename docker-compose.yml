@@ -1,7 +1,5 @@
 App:
   image: reviewninja/review.ninja
-  ports:
-   - "5000:5000"
   links:
    - Mongo
    - Slack
@@ -26,7 +24,7 @@ App:
     SLACK_PORT: 8080
 
 Nginx:
-  image: nginx
+  image: reviewninja/nginx
   links:
    - App
   ports:
@@ -57,7 +55,7 @@ Elasticsearch:
    - "9300:9300"
 
 Logstash:
-  image: ggruiz/logstash
+  image: reviewninja/logstash
   ports:
    - "6000:6000"
    - "6000:6000/udp"
@@ -75,7 +73,7 @@ Kibana:
    - Elasticsearch: elasticsearch
 
 Logspout:
-  image: ggruiz/logspout
+  image: reviewninja/logspout
   volumes:
    - /var/run/docker.sock:/tmp/docker.sock
   links:
